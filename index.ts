@@ -18,7 +18,6 @@ const person = {
 
 const fruits = ['Apple', 'Banana', 'Grape'];
 
-
 // tuple型・・・決まった形の配列を作るとき
 const book: [string, number, boolean] = ['bussiness', 1500, false];
 
@@ -46,8 +45,6 @@ let unionType: number | string = 10;
 unionType = 'hello';
 let unionTypes: (number | string)[] = [21, 'hello']
 
-
-
 type ClothSize = 'small' | 'medium' | 'large'
 const apple = 'apple'
 let clothSize: 'small' | 'medium' | 'large' = 'large';
@@ -57,4 +54,44 @@ const cloth: {
 } = {
   color: 'white',
   size: clothSize
+}
+
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+function syaHello(): void {
+  console.log('Hello');
+}
+
+let tmp: undefined;
+
+const anotherAdd: (n1: number, n2: number) => number = function (num1: number, num2: number): number {
+  return num1 + num2;
+};
+
+const doubleNumber: (num: number) => number = num => num * 2;
+
+function doubleAndHandle(num: number, cb: (num: number) => number): void {
+  const doubleNum = cb(num * 2);
+  console.log(doubleNum);
+}
+
+doubleAndHandle(21, doubleNum => {
+  return doubleNum
+});
+
+let unknownInput: unknown;
+let anyInput: any;
+let text: string;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+text = anyInput;
+if (typeof unknownInput === 'string') {
+  text = unknownInput
+}
+
+function error(message: string): never {
+  throw new Error(message);
 }
